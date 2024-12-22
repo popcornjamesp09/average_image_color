@@ -5,7 +5,8 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     if args.len() != 2 {
-        println!("Please add file to average");
+        println!("Add the file path to the image you want to be averaged");
+        println!("Usage: {} image.png", args[0]);
         std::process::exit(0)
     }
 
@@ -24,8 +25,9 @@ fn main() {
     new_image.save(&(img_path.to_string() + ".new" + &img_path_extinsion)).unwrap()
 }
 
+// This is needed because you have to have a valid image extension for img.save()
+// Is it the best no, does it work yes
 fn get_img_path_extinsion(mut img_path: String) -> String {
-    // This is needed because you have to have a valid image extension for img.save()
     let len = img_path.chars().count() - 4;
     let _ = img_path.drain(0..len).for_each(|_| {});
     return img_path;
@@ -33,7 +35,6 @@ fn get_img_path_extinsion(mut img_path: String) -> String {
 
 
 fn get_average_color(img: image::DynamicImage, img_dimension_x: u32, img_dimension_y: u32) -> [u8 ; 3] {
-    
     // Because IDK another way
     // This one works :)
     let mut r_value: u32 = 0;

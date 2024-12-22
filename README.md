@@ -4,7 +4,7 @@ This is a simple rust program that finds the average color of an image given a v
   
 ## Usage
 
-average_image_color.exe <path to image>
+average_image_color.exe \<path to image>
 
 ## Example
 | Before | After |
