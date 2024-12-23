@@ -4,7 +4,7 @@ use std::io;
 
 fn main() {
     let mut current_work_path: String = String::new();
-    io::stdin().read_line(&mut current_work_path).expect(("Error to read input"));
+    io::stdin().read_line(&mut current_work_path).expect("Error to read input");
 
     for file in WalkDir::new(current_work_path).into_iter().filter_map(|file| file.ok()) {
         let file_name = String::from(file.path().to_str().unwrap());
