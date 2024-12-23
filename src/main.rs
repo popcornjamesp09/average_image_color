@@ -6,12 +6,15 @@ fn main() {
     let mut current_work_path: String = String::new();
     io::stdin().read_line(&mut current_work_path).expect("Error to read input");
 
+    println!("{}", current_work_path);
+
     for file in WalkDir::new(current_work_path).into_iter().filter_map(|file| file.ok()) {
+        println!("?: {:?}", file);
         let file_name = String::from(file.path().to_str().unwrap());
         let file_ext = get_file_path_extinsion(file_name.clone(), 3);
         if file_ext == "png" || file_ext == "jpg" {
-            println!("{}", file_name);
-            generate_image_from_file(file_name)
+            println!(": {}", file_name);
+            //generate_image_from_file(file_name)
         }
     }
 }
